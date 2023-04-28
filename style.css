@@ -1,0 +1,87 @@
+
+.input-area {
+  display: block;
+  width: 900px;
+  margin: 50px auto;
+  background-color: #edf1f0;
+  border-radius: 3px;
+  border: solid 1px #3d4952;
+  min-height: 100px;
+}
+
+.keyboard {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+  width: fit-content;
+  margin: auto;
+  background-color: #e5e9eb;
+  border-radius: 6px;
+  user-select: none;
+  opacity: 1;
+  transition: opacity 0.4s;
+  padding: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.keyboard__key {
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  height: 46px;
+  min-width: 46px;
+  margin: 3px;
+  background-color: #3d4952;
+  /* padding: 10px; */
+  box-sizing: border-box;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+.keyboard__key--special {
+  background-color: #1c252c;
+  color: #c5cdd4;
+  font-size: 14px;
+}
+
+.keyboard__key--wide {
+  width: 98px;
+}
+
+.keyboard__key--extra-wide {
+  width: 358px;
+}
+
+.keyboard__key:active {
+  background: #556774;
+}
+
+.keyboard__key--activatable::before {
+  content: '';
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  height: 6px;
+  width: 6px;
+  background-color: #a0adb6;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.keyboard__key--active::before {
+  background-color: #08ff00;
+}
