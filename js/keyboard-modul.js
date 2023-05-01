@@ -1,3 +1,12 @@
+// add textarea
+function createInput() {
+  const inputEl = document.createElement("textarea");
+  inputEl.classList.add("input-area", "use-keyboard-input");
+  inputEl.setAttribute("placeholder", "Text should be here");
+  document.body.appendChild(inputEl);
+}
+
+// add keyboard
 const Keyboard = {
   elements: {
     keyboard: null,
@@ -22,6 +31,15 @@ const Keyboard = {
 
     this.elements.keys = this.elements.keyboard.querySelectorAll(".keyboard__key");
 
+    // using keyboard with the input with class .use-keyboard-input
+    // document.querySelector(".use-keyboard-input").addEventListener("focus", () => {
+    //   element.value = currentValue;
+    // })
+    // document.querySelectorAll(".use-keyboard-input").forEach(element => {
+    //   element.addEventListener("focus", () => {
+    //     element.value = currentValue;
+    //   })
+    // })
   },
 
   _createKeys() {
@@ -43,6 +61,8 @@ const Keyboard = {
       const keyEl = document.createElement("button");
       const insertLineBreak = ["backspace", "del", "enter", "shiftRight"].indexOf(key) !== -1;
 
+      const inputEl = document.querySelector(".use-keyboard-input");
+
       keyEl.setAttribute("type", "button");
       keyEl.classList.add("keyboard__key");
 
@@ -50,9 +70,9 @@ const Keyboard = {
         case "backspace":
           keyEl.classList.add("keyboard__key--wide", "keyboard__key--special");
           keyEl.innerText = "Backspace";
-          // keyEl.innerHTML = createIconHTML("backspace");
 
           keyEl.addEventListener("click", () => {
+            inputEl.value = inputEl.value.substring(0, inputEl.value.length-1);
             this.properties.value = this.properties.value.substring(0, this.properties.value.length-1);
             this._triggerEvent("oninput");
           })
@@ -63,6 +83,9 @@ const Keyboard = {
           keyEl.innerText = "DEL";
 
           keyEl.addEventListener("click", () => {
+            inputEl.value = inputEl.value.length > 1
+                            ? inputEl.value.substring(1, inputEl.value.length)
+                            : "";
             this.properties.value = this.properties.value.substring(1, this.properties.value.length-1);
             this._triggerEvent("oninput");
           })
@@ -80,11 +103,11 @@ const Keyboard = {
 
         case "enter":
           keyEl.classList.add("keyboard__key--wide", "keyboard__key--special");
-          // keyEl.innerHTML = createIconHTML("keyboard_return");
           keyEl.innerText = "ENTER";
 
           keyEl.addEventListener("click", () => {
-            this.properties.value += "/n";
+            inputEl.value += "\n";
+            this.properties.value += "\n";
             this._triggerEvent("oninput");
           })
           break;
@@ -94,6 +117,7 @@ const Keyboard = {
           keyEl.innerHTML = createIconHTML("space_bar");
 
           keyEl.addEventListener("click", () => {
+            inputEl.value += " ";
             this.properties.value += " ";
             this._triggerEvent("oninput");
           })
@@ -115,7 +139,8 @@ const Keyboard = {
           keyEl.innerHTML = createIconHTML("arrow_drop_up");
 
           keyEl.addEventListener("click", () => {
-            this.properties.value += " ";
+            inputEl.value += "↑";
+            this.properties.value += "↑";
             this._triggerEvent("oninput");
           })
           break;
@@ -125,7 +150,8 @@ const Keyboard = {
           keyEl.innerHTML = createIconHTML("arrow_drop_down");
 
           keyEl.addEventListener("click", () => {
-            this.properties.value += " ";
+            inputEl.value += "↓";
+            this.properties.value += "↓";
             this._triggerEvent("oninput");
           })
           break;
@@ -135,7 +161,8 @@ const Keyboard = {
           keyEl.innerHTML = createIconHTML("arrow_left");
 
           keyEl.addEventListener("click", () => {
-            this.properties.value += " ";
+            inputEl.value += "←";
+            this.properties.value += "←";
             this._triggerEvent("oninput");
           })
           break;
@@ -145,7 +172,8 @@ const Keyboard = {
           keyEl.innerHTML = createIconHTML("arrow_right");
 
           keyEl.addEventListener("click", () => {
-            this.properties.value += " ";
+            inputEl.value += "→";
+            this.properties.value += "→";
             this._triggerEvent("oninput");
           })
           break;
@@ -200,6 +228,7 @@ const Keyboard = {
           keyEl.textContent = key.toLowerCase();
 
           keyEl.addEventListener("click", () => {
+            inputEl.value += this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
             this.properties.value += this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
             this._triggerEvent("oninput");
           })
@@ -241,5 +270,6 @@ const Keyboard = {
 }
 
 window.addEventListener("DOMContentLoaded", function () {
+  createInput();
   Keyboard.init();
 });
