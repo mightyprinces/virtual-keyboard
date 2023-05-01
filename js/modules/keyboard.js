@@ -1,15 +1,7 @@
-// add textarea
-function createInput() {
-  const inputEl = document.createElement("textarea");
-  inputEl.classList.add("input-area", "use-keyboard-input");
-  inputEl.setAttribute("placeholder", "Text should be here");
-  document.body.appendChild(inputEl);
-}
-
-// add keyboard
-const Keyboard = {
+export default {
   elements: {
     keyboard: null,
+    capsLock: null,
     keys: [],
   },
 
@@ -19,7 +11,7 @@ const Keyboard = {
   },
 
   keysArr: [
-    {"row":0, "code":"Digit1", "en":"`", "ru":"]"},
+    {"row":0, "code":"Digit1", "en":"`", "ru":"]", caseOrLocaleSensetive: true},
     {"row":0, "code":"Digit1", "en":"1", "ru":"1"},
     {"row":0, "code":"Digit2", "en":"2", "ru":"2"},
     {"row":0, "code":"Digit3", "en":"3", "ru":"3"},
@@ -30,59 +22,59 @@ const Keyboard = {
     {"row":0, "code":"Digit8", "en":"8", "ru":"8"},
     {"row":0, "code":"Digit9", "en":"9", "ru":"9"},
     {"row":0, "code":"Digit0", "en":"0", "ru":"0"},
-    {"row":0, "code":"Minus", "en":"-"," ru":"-"},
+    {"row":0, "code":"Minus", "en":"-", "ru":"-"},
     {"row":0, "code":"Equal", "en":"=", "ru":"="},
     {"row":0, "code":"Backspace", "en":"Backspace", "ru":"Backspace"},
 
     {"row":1, "code":"Tab", "en":"", "ru":""},
-    {"row":1, "code":"KeyQ", "en":"q", "ru":"й"},
-    {"row":1, "code":"KeyW", "en":"w", "ru":"ц"},
-    {"row":1, "code":"KeyE", "en":"e", "ru":"у"},
-    {"row":1, "code":"KeyR", "en":"r", "ru":"к"},
-    {"row":1, "code":"KeyT", "en":"t", "ru":"е"},
-    {"row":1, "code":"KeyY", "en":"y", "ru":"н"},
-    {"row":1, "code":"KeyU", "en":"u", "ru":"г"},
-    {"row":1, "code":"KeyI", "en":"i", "ru":"ш"},
-    {"row":1, "code":"KeyO", "en":"o", "ru":"щ"},
-    {"row":1, "code":"KeyP", "en":"p", "ru":"з"},
-    {"row":1, "code":"BracketLeft", "en":"[", "ru":"х"},
-    {"row":1, "code":"BracketRight", "en":"]", "ru":"ъ"},
-    {"row":1, "code":"Backslash", "en":"\\", "ru":""},
-    {"row":1, "code":"Delete", "en":"Del", "ru":""},
+    {"row":1, "code":"KeyQ", "en":"q", "ru":"й", caseOrLocaleSensetive: true},
+    {"row":1, "code":"KeyW", "en":"w", "ru":"ц", caseOrLocaleSensetive: true},
+    {"row":1, "code":"KeyE", "en":"e", "ru":"у", caseOrLocaleSensetive: true},
+    {"row":1, "code":"KeyR", "en":"r", "ru":"к", caseOrLocaleSensetive: true},
+    {"row":1, "code":"KeyT", "en":"t", "ru":"е", caseOrLocaleSensetive: true},
+    {"row":1, "code":"KeyY", "en":"y", "ru":"н", caseOrLocaleSensetive: true},
+    {"row":1, "code":"KeyU", "en":"u", "ru":"г", caseOrLocaleSensetive: true},
+    {"row":1, "code":"KeyI", "en":"i", "ru":"ш", caseOrLocaleSensetive: true},
+    {"row":1, "code":"KeyO", "en":"o", "ru":"щ", caseOrLocaleSensetive: true},
+    {"row":1, "code":"KeyP", "en":"p", "ru":"з", caseOrLocaleSensetive: true},
+    {"row":1, "code":"BracketLeft", "en":"[", "ru":"х", caseOrLocaleSensetive: true},
+    {"row":1, "code":"BracketRight", "en":"]", "ru":"ъ", caseOrLocaleSensetive: true},
+    {"row":1, "code":"Backslash", "en":"\\", "ru":"|", caseOrLocaleSensetive: true},
+    {"row":1, "code":"NumpadDecimal", "en":"Del", "ru":"Del"},
 
-    {"row":2, "code":"CapsLock", "en":"caps", "ru":""},
-    {"row":2, "code":"KeyA", "en":"a", "ru":"ф"},
-    {"row":2, "code":"KeyS", "en":"s", "ru":"ы"},
-    {"row":2, "code":"KeyD", "en":"d", "ru":"в"},
-    {"row":2, "code":"KeyF", "en":"f", "ru":"а"},
-    {"row":2, "code":"KeyG", "en":"g", "ru":"п"},
-    {"row":2, "code":"KeyH", "en":"h", "ru":"р"},
-    {"row":2, "code":"KeyJ", "en":"j", "ru":"о"},
-    {"row":2, "code":"KeyK", "en":"k", "ru":"л"},
-    {"row":2, "code":"KeyL", "en":"l", "ru":"д"},
-    {"row":2, "code":"Semicolon", "en":";", "ru":"ж"},
-    {"row":2, "code":"Quote", "en":"'", "ru":"э"},
-    {"row":2, "code":"Enter", "en":"Enter", "ru":"Ввод"},
+    {"row":2, "code":"CapsLock", "en":"caps", "ru":"caps"},
+    {"row":2, "code":"KeyA", "en":"a", "ru":"ф", caseOrLocaleSensetive: true},
+    {"row":2, "code":"KeyS", "en":"s", "ru":"ы", caseOrLocaleSensetive: true},
+    {"row":2, "code":"KeyD", "en":"d", "ru":"в", caseOrLocaleSensetive: true},
+    {"row":2, "code":"KeyF", "en":"f", "ru":"а", caseOrLocaleSensetive: true},
+    {"row":2, "code":"KeyG", "en":"g", "ru":"п", caseOrLocaleSensetive: true},
+    {"row":2, "code":"KeyH", "en":"h", "ru":"р", caseOrLocaleSensetive: true},
+    {"row":2, "code":"KeyJ", "en":"j", "ru":"о", caseOrLocaleSensetive: true},
+    {"row":2, "code":"KeyK", "en":"k", "ru":"л", caseOrLocaleSensetive: true},
+    {"row":2, "code":"KeyL", "en":"l", "ru":"д", caseOrLocaleSensetive: true},
+    {"row":2, "code":"Semicolon", "en":";", "ru":"ж", caseOrLocaleSensetive: true},
+    {"row":2, "code":"Quote", "en":"'", "ru":"э", caseOrLocaleSensetive: true},
+    {"row":2, "code":"Enter", "en":"Enter", "ru":"Enter"},
 
     {"row":3, "code":"ShiftLeft", "en":"Shift", "ru":"Shift"},
-    {"row":3, "code":"Backslash", "en":"\\", "ru":"ё"},
-    {"row":3, "code":"KeyZ", "en":"z", "ru":"я"},
-    {"row":3, "code":"KeyX", "en":"x", "ru":"ч"},
-    {"row":3, "code":"KeyC", "en":"c", "ru":"с"},
-    {"row":3, "code":"KeyV", "en":"v", "ru":"м"},
-    {"row":3, "code":"KeyB", "en":"b", "ru":"и"},
-    {"row":3, "code":"KeyN", "en":"n", "ru":"т"},
-    {"row":3, "code":"KeyM", "en":"m", "ru":"ь"},
-    {"row":3, "code":"Comma", "en":",", "ru":"б"},
-    {"row":3, "code":"Period", "en":".", "ru":"ю"},
+    {"row":3, "code":"Backslash", "en":"\\", "ru":"ё", caseOrLocaleSensetive: true},
+    {"row":3, "code":"KeyZ", "en":"z", "ru":"я", caseOrLocaleSensetive: true},
+    {"row":3, "code":"KeyX", "en":"x", "ru":"ч", caseOrLocaleSensetive: true},
+    {"row":3, "code":"KeyC", "en":"c", "ru":"с", caseOrLocaleSensetive: true},
+    {"row":3, "code":"KeyV", "en":"v", "ru":"м", caseOrLocaleSensetive: true},
+    {"row":3, "code":"KeyB", "en":"b", "ru":"и", caseOrLocaleSensetive: true},
+    {"row":3, "code":"KeyN", "en":"n", "ru":"т", caseOrLocaleSensetive: true},
+    {"row":3, "code":"KeyM", "en":"m", "ru":"ь", caseOrLocaleSensetive: true},
+    {"row":3, "code":"Comma", "en":",", "ru":"б", caseOrLocaleSensetive: true},
+    {"row":3, "code":"Period", "en":".", "ru":"ю", caseOrLocaleSensetive: true},
     {"row":3, "code":"Slash" ,"en":"/", "ru":"/"},
     {"row":3, "code":"ArrowUp" ,"en":"↑", "ru":"↑"},
-    {"row":3, "code":"ShiftRight", "en":"shift", "ru":"shift"},
+    {"row":3, "code":"ShiftRight", "en":"Shift", "ru":"Shift"},
 
     {"row":4, "code":"ControlLeft", "en":"Ctrl", "ru":"Ctrl"},
     {"row":4, "code":"Windows", "en":"Win", "ru":"Win"},
     {"row":4, "code":"AltLeft", "en":"Alt", "ru":"Alt"},
-    {"row":4, "code":"Space", "en":"", "ru":""},
+    {"row":4, "code":"Space", "en":"Space", "ru":"Space"},
     {"row":4, "code":"AltRight", "en":"Alt", "ru":"Alt"},
     {"row":4, "code":"ControlRight", "en":"Ctrl", "ru":"Ctrl"},
     {"row":4, "code":"ArrowLeft", "en":"←", "ru":"←"},
@@ -91,6 +83,7 @@ const Keyboard = {
   ],
 
   pressedKeys: {},
+  locale: "ru",
 
   init() {
     // creating keyboard without keys
@@ -100,16 +93,6 @@ const Keyboard = {
 
     this._createKeys();
     this.startListen();
-
-    // using keyboard with the input with class .use-keyboard-input
-    // document.querySelector(".use-keyboard-input").addEventListener("focus", () => {
-    //   element.value = currentValue;
-    // })
-    // document.querySelectorAll(".use-keyboard-input").forEach(element => {
-    //   element.addEventListener("focus", () => {
-    //     element.value = currentValue;
-    //   })
-    // })
   },
 
   _createKeys() {
@@ -137,9 +120,9 @@ const Keyboard = {
           })
           break;
 
-        case "Delete":
+        case "NumpadDecimal":
           keyEl.classList.add("keyboard__key--special");
-          keyEl.innerText = key.en;
+          keyEl.innerText = key[this.locale];
 
           keyEl.addEventListener("click", () => {
             inputEl.value = inputEl.value.length > 1
@@ -155,8 +138,9 @@ const Keyboard = {
 
           keyEl.addEventListener("click", () => {
             this._toggleCapsLock();
-            keyEl.classList.toggle("keyboard__key--active");
           })
+
+          this.elements.capsLock = keyEl;
           break;
 
         case "Enter":
@@ -232,7 +216,7 @@ const Keyboard = {
         // shift buttons
         case "ShiftLeft":
           keyEl.classList.add("keyboard__key--special", "keyboard__key--wide");
-          keyEl.innerText = key.en;
+          keyEl.innerText = key[this.locale];
 
           keyEl.addEventListener("click", () => {
 
@@ -241,62 +225,71 @@ const Keyboard = {
 
         case "ShiftRight":
           keyEl.classList.add("keyboard__key--special");
-          keyEl.innerText = key.en;
+          keyEl.innerText = key[this.locale];
+
+          keyEl.addEventListener("click", () => {
+            this._toggleLocale();
+          })
+          break;
+
+        case "AltLeft":
+          keyEl.classList.add("keyboard__key--special");
+          keyEl.innerText = key[this.locale];;
 
           keyEl.addEventListener("click", () => {
 
           })
           break;
 
-          case "AltLeft":
-            keyEl.classList.add("keyboard__key--special");
-            keyEl.innerText = key.en;;
-
-            keyEl.addEventListener("click", () => {
-
-            })
-            break;
-
-          case "AltRight":
-            keyEl.classList.add("keyboard__key--special");
-            keyEl.innerText = key.en;
-
-            keyEl.addEventListener("click", () => {
-
-            })
-            break;
-
-          case "ControlLeft":
-            keyEl.classList.add("keyboard__key--special");
-            keyEl.innerText = key.en;
-
-            keyEl.addEventListener("click", () => {
-
-            })
-            break;
-
-          case "ControlRight":
-            keyEl.classList.add("keyboard__key--special");
-            keyEl.innerText = key.en;
-
-            keyEl.addEventListener("click", () => {
-
-            })
-            break;
-
-        default:
-          keyEl.innerText = key.en;
+        case "AltRight":
+          keyEl.classList.add("keyboard__key--special");
+          keyEl.innerText = key[this.locale];
 
           keyEl.addEventListener("click", () => {
-            inputEl.value += this.properties.capsLock ? key.en.toUpperCase() : key.en.toLowerCase();
-            this.properties.value += this.properties.capsLock ? key.en.toUpperCase() : key.en.toLowerCase();
+
+          })
+          break;
+
+        case "ControlLeft":
+          keyEl.classList.add("keyboard__key--special");
+          keyEl.innerText = key[this.locale];
+
+          keyEl.addEventListener("click", () => {
+
+          })
+          break;
+
+        case "ControlRight":
+          keyEl.classList.add("keyboard__key--special");
+          keyEl.innerText = key[this.locale];
+
+          keyEl.addEventListener("click", () => {
+
+          })
+          break;
+
+        case "Windows":
+          keyEl.classList.add("keyboard__key--special");
+          keyEl.innerText = key[this.locale];
+
+          keyEl.addEventListener("click", () => {
+
+          })
+          break;
+
+        default:
+          keyEl.innerText = key[this.locale];
+
+          keyEl.addEventListener("click", () => {
+            inputEl.value += this.properties.capsLock ? key[this.locale].toUpperCase() : key[this.locale].toLowerCase();
+            this.properties.value += this.properties.capsLock ? key[this.locale].toUpperCase() : key[this.locale].toLowerCase();
           })
           break;
       }
 
       fragment.appendChild(keyEl);
 
-      const insertLineBreak = ["Backspace", "Delete", "Enter", "ShiftRight"].indexOf(key.code) !== -1;
+      const insertLineBreak = ["Backspace", "NumpadDecimal", "Enter", "ShiftRight"].indexOf(key.code) !== -1;
       if (insertLineBreak) {
         fragment.appendChild(document.createElement("br"));
       }
@@ -312,27 +305,64 @@ const Keyboard = {
 
   _toggleCapsLock() {
     this.properties.capsLock = !this.properties.capsLock;
+    this.elements.capsLock.classList.toggle("keyboard__key--active");
+    this._updateKeys();
 
-    for (const key of this.elements.keys) {
-      if (key.textContent.length === 1 && key.textContent.match(/[a-z]/i)) {
-        key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+    this.elements.capsLock.classList.add('keyboard__key--pressed');
+    setTimeout(() => {
+      this.elements.capsLock.classList.remove('keyboard__key--pressed');
+    }, 100);
+  },
+
+  _toggleLocale() {
+    this.locale = this.locale === "en" ? "ru" : "en";
+    this._updateKeys();
+  },
+
+  _updateKeys() {
+    this.keysArr.forEach((key) => {
+      if (key.caseOrLocaleSensetive) {
+        const keyText = key[this.locale];
+        key.el.textContent = this.properties.capsLock ? keyText.toUpperCase() : keyText.toLowerCase();
       }
-    }
-    console.log("CapsLock toggled");
+    })
   },
 
   startListen() {
     window.addEventListener('keydown', (ev) => {
       const keyCode = ev.code;
-      if (!this.pressedKeys[keyCode]) {
+
+
+      // подсвечиваем клавиши при нажатии
+      if (!this.pressedKeys[keyCode] && keyCode !== "CapsLock") {
         this.pressedKeys[keyCode] = true; // записываем нажатую клавишу в pressedKeys
         this.highlightKeys();
       }
+
+      // при нажании ShiftRight сменяем раскладку
+      if (keyCode === "ShiftRight") {
+        this._toggleLocale();
+      }
+
+      // при нажании CapsLock сменяем раскладку
+      if (keyCode === "CapsLock") {
+        this._toggleCapsLock();
+      }
     });
+
+    // прекращаем подсвечивать клавишу при отпускании
     window.addEventListener('keyup', (ev) => {
       const keyCode = ev.code;
-      delete this.pressedKeys[keyCode]; // удаляем отпущенную клавишу из pressedKeys
-      this.highlightKeys();
+
+      if (keyCode !== "CapsLock") {
+        delete this.pressedKeys[keyCode]; // удаляем отпущенную клавишу из pressedKeys
+        this.highlightKeys();
+      }
+
+      // при нажании CapsLock сменяем раскладку
+      if (keyCode === "CapsLock") {
+        this._toggleCapsLock();
+      }
     });
   },
 
@@ -345,11 +375,4 @@ const Keyboard = {
       }
     });
   }
-
 }
-
-window.addEventListener("DOMContentLoaded", function () {
-  createInput();
-  Keyboard.init();
-  // highlightKeys();
-});
