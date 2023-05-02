@@ -366,6 +366,7 @@ export default {
     });
   },
 
+  // подсвечивание кнопок
   highlightKeys() {
     this.keysArr.forEach((key) => {
       if (this.pressedKeys[key.code]) {
@@ -374,5 +375,16 @@ export default {
         key.el.classList.remove('keyboard__key--pressed');
       }
     });
+  },
+
+  // перед перезагрузкой или закрытием страницы (событие beforeunload) данные нужно сохранить
+  setLocalStorage() {
+    localStorage.setItem('locale', this.locale);
+  },
+  // перед загрузкой страницы (событие load) данные нужно восстановить и отобразить
+  getLocalStorage() {
+    if(localStorage.getItem('locale')) {
+      this.locale = localStorage.getItem('locale');
+    }
   }
 }

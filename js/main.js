@@ -19,5 +19,10 @@ function createNote() {
 window.addEventListener("DOMContentLoaded", function () {
   createInput();
   createNote();
+  Keyboard.getLocalStorage();
   Keyboard.init();
+});
+
+window.addEventListener('beforeunload', function () {
+  Keyboard.setLocalStorage();
 });
