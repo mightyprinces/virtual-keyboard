@@ -298,8 +298,8 @@ export default {
 
           keyEl.addEventListener('click', (event) => {
             event.preventDefault();
-            inputEl.value += '    ';
-            this.properties.value += '    ';
+            inputEl.value += '\t';
+            this.properties.value += '\t';
           });
           break;
 
