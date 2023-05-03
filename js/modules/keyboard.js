@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
@@ -147,9 +148,6 @@ export default {
       row: 3, code: 'ShiftLeft', en: 'Shift', ru: 'Shift',
     },
     {
-      row: 3, code: 'Backslash', en: '\\', ru: 'ё', caseOrLocaleSensetive: true,
-    },
-    {
       row: 3, code: 'KeyZ', en: 'z', ru: 'я', caseOrLocaleSensetive: true,
     },
     {
@@ -202,9 +200,6 @@ export default {
       row: 4, code: 'AltRight', en: 'Alt', ru: 'Alt',
     },
     {
-      row: 4, code: 'ControlRight', en: 'Ctrl', ru: 'Ctrl',
-    },
-    {
       row: 4, code: 'ArrowLeft', en: '←', ru: '←',
     },
     {
@@ -212,6 +207,9 @@ export default {
     },
     {
       row: 4, code: 'ArrowRight', en: '→', ru: '→',
+    },
+    {
+      row: 4, code: 'ControlRight', en: 'Ctrl', ru: 'Ctrl',
     },
   ],
 
@@ -298,8 +296,10 @@ export default {
           keyEl.classList.add('keyboard__key--special');
           keyEl.innerHTML = createIconHTML('keyboard_tab');
 
-          keyEl.addEventListener('click', () => {
-            this.properties.value += ' ';
+          keyEl.addEventListener('click', (event) => {
+            event.preventDefault();
+            inputEl.value += '    ';
+            this.properties.value += '    ';
           });
           break;
 
@@ -355,7 +355,7 @@ export default {
           break;
 
         case 'ShiftRight':
-          keyEl.classList.add('keyboard__key--special');
+          keyEl.classList.add('keyboard__key--special', 'keyboard__key--wide');
           keyEl.innerText = key[this.locale];
 
           keyEl.addEventListener('click', () => {
